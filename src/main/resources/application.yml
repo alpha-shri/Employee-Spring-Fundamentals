@@ -53,6 +53,12 @@ spring:
   application:
     name: EMPLOYEE-CRUD-SERVICE
 
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+
 
 ---
 # PROD-DB CONFIGURATION
@@ -74,3 +80,5 @@ spring:
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
   application:
     name: EMPLOYEE-CRUD-SERVICE
+  devtools:
+    add-properties: true
