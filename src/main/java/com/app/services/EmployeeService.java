@@ -92,4 +92,13 @@ public class EmployeeService {
 		return status;
 	}
 
+    public Employee findByNameService(String name) {
+
+		Optional<Employee> optional = dao.findByName(name);
+
+		if(!optional.isPresent()) throw new BusinessException("602", "No employee found");
+
+		return optional.get();
+
+	}
 }

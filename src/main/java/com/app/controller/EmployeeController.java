@@ -1,7 +1,6 @@
 package com.app.controller;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +72,14 @@ public class EmployeeController {
 
 		return employee != null ? new ResponseEntity<Employee>(employee, HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	@GetMapping("/findbyname/{name}")
+	public ResponseEntity<Employee> fetchByName(@PathVariable String name) {
+		Employee employee = service.findByNameService(name);
+
+		return employee != null ? new ResponseEntity<Employee>(employee, HttpStatus.OK)
+								: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@PutMapping("/update")
