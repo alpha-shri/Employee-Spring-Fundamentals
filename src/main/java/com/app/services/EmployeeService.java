@@ -22,6 +22,15 @@ public class EmployeeService {
 		return dao.findAll();
 	}
 
+	public Employee findByName(String name){
+		Optional<Employee> optional = dao.findByName(name);
+
+		if(!optional.isPresent()) throw new BusinessException("603", "No employee found");
+
+		return optional.get();
+
+	}
+
 	public Employee saveService(Employee employee) {
 		
 // NEVER PUT VALIDATION INSIDE TRY-BLOCK AS it will get overridden by the catch Exception block

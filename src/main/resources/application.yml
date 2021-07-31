@@ -1,9 +1,66 @@
 server:
   port: 8552
-  
+
 spring:
+  profiles:
+    active: QA
+
+
+
+welcome:
+  message: Welcome to spring-boot devtools.
+
+---
+# DEV-DB CONFIGURATION
+spring:
+  profiles: DEV
   datasource:
     url: jdbc:mysql://localhost:3306/alphadb
+    username: root
+    password: password1234
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  application:
+    name: EMPLOYEE-CRUD-SERVICE
+
+
+
+---
+# QA-DB CONFIGURATION
+
+spring:
+  profiles: QA
+  datasource:
+    url: jdbc:mysql://localhost:3306/employeedb-qa
+    username: root
+    password: password1234
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  application:
+    name: EMPLOYEE-CRUD-SERVICE
+
+
+---
+# PROD-DB CONFIGURATION
+
+spring:
+  profiles: PROD
+  datasource:
+    url: jdbc:mysql://localhost:3306/employeedb-prod
     username: root
     password: password1234
   jpa:
